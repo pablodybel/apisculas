@@ -231,9 +231,9 @@ export default {
 <template>
   <div class="home">
     <div class="hero">
-      <h1 class="hero-title">🎬 Descubre Películas</h1>
+      <h1 class="hero-title">Apisculas</h1>
       <p class="hero-subtitle">
-        Explora, busca y guarda tus películas favoritas
+        🎬 Descubre, busca y guarda tus películas favoritas
       </p>
     </div>
 
@@ -323,10 +323,75 @@ export default {
 }
 
 .hero-title {
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-  text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.3);
+  font-size: 4.5rem;
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 
+    0 0 20px rgba(255, 107, 107, 0.5),
+    0 0 40px rgba(78, 205, 196, 0.3),
+    0 0 60px rgba(69, 183, 209, 0.2);
+  animation: 
+    gradientShift 3s ease-in-out infinite,
+    glowPulse 2s ease-in-out infinite alternate,
+    float 4s ease-in-out infinite;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+  cursor: default;
+  transition: all 0.3s ease;
+}
+
+.hero-title:hover {
+  transform: scale(1.05) rotate(1deg);
+  filter: brightness(1.2);
+}
+
+.hero-title::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3);
+  background-size: 400% 400%;
+  border-radius: 20px;
+  z-index: -1;
+  opacity: 0;
+  animation: gradientShift 3s ease-in-out infinite;
+  transition: opacity 0.3s ease;
+}
+
+.hero-title:hover::before {
+  opacity: 0.3;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes glowPulse {
+  0% { 
+    filter: drop-shadow(0 0 20px rgba(255, 107, 107, 0.5))
+           drop-shadow(0 0 40px rgba(78, 205, 196, 0.3));
+  }
+  100% { 
+    filter: drop-shadow(0 0 30px rgba(255, 107, 107, 0.8))
+           drop-shadow(0 0 60px rgba(78, 205, 196, 0.5))
+           drop-shadow(0 0 80px rgba(69, 183, 209, 0.3));
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
 
 .hero-subtitle {
@@ -427,7 +492,9 @@ export default {
 /* Responsive */
 @media (max-width: 768px) {
   .hero-title {
-    font-size: 2.2rem;
+    font-size: 3rem;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
   }
   
   .hero-subtitle {
@@ -460,7 +527,9 @@ export default {
   }
   
   .hero-title {
-    font-size: 1.8rem;
+    font-size: 2.5rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
   }
   
   .content {
